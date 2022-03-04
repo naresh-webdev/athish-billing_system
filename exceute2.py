@@ -2,7 +2,7 @@ import mysql.connector as ms
 
 
 x = ms.connect(host='localhost', user='root',
-               passwd='Naresh@2004', database='athish_new')
+               passwd='', database='athish_new')
 cur = x.cursor(buffered=True)
 
 
