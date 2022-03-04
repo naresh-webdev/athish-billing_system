@@ -2,7 +2,7 @@ import mysql.connector as ms
 
 
 x = ms.connect(host='localhost', user='root',
-               passwd='Naresh@2004')
+               passwd='')
 # buffered is an attribute ,If buffered is True , the cursor fetches all rows from the server after an operation is executed.
 
 cur = x.cursor(buffered=True)
