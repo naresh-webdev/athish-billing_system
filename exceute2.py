@@ -22,6 +22,15 @@ def display_basket():
         print(i)
     print('\n')
 
+def display_items_admin():
+    cur.execute('select * from product')
+    data = cur.fetchall()
+    print('(id, name, qty, price per item )')
+    for i in data:
+        print(i)
+    print('\n'))
+
+ 
 
 def check_item(itemname,):
     itempresent = 0
@@ -173,7 +182,7 @@ while True:
                     print('correct password✔')
                     print('now you can add items to the market')
                     print('already existing items in the market are : ')
-                    display_items()
+                    display_items_admin()
                     item_id = int(
                         input('enter item id to be added in the market : '))
                     item_name = input(
