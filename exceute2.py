@@ -184,8 +184,10 @@ try:
                         print(
                             '1.update items in the table(updating qty and price')
                         print('2.add new item to the table')
+                        print('3.retun item to the market')
+                        print('4.remove item from the market')
                         ch8 = int(input('enter your choice : '))
-                        if ch8 in [1, 2]:
+                        if ch8 in [1, 2,3,4]:
                             if ch == 1:
                                 print('already existing items in the market are : ')
                                 display_items_admin()
@@ -219,8 +221,25 @@ try:
                                         input('enter the new item qty be replace for the old one : '))
                                     cur.execute('update product set qty = {} where id={}'.format(
                                         qty_to_update, item_id_to_update))
-                                    print('item added successfully. ')
+                                print('item added successfully. ')
+                            elif ch8 == 3:
+                                print('---return back the product into the market--')
+                                return_id = int(input('enter item id to be returned : '))
+                                return_name = input('enter item name : ')
+                                return_qty = int(input('enter qty : '))
+                                cur.execute('insert into return values({},'{}',{})'.format(return_id,return_name,return_qty))
+                                x.commit()
+                                print('item added successfully')
+                            elif ch8 == 4:
+                                print("--removing an item from the market--")
+                                remove_name = input('enter name of the item to remove from the market : ')
+                                if check_item(remove_name):
+                                  cur.execute('delete from product where name='{}' '.format(remove_name))
+                                else :
+                                  print('the entered item is not present in the market')
+                                                
                             else:
+                              
                                 print('invalid input.. ')
                                 break
 
