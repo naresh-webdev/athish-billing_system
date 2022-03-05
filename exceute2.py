@@ -88,7 +88,7 @@ try:
                     if leng < no_itemsadded:
                         print('the select qty is more than the availabe qty 😟😟😟')
                         ch1 = input('want to add any other items ? (y/n) : ')
-                        if ch1 == n:
+                        if ch1 == 'n':
                             boolean = 0
                             break
                     else:
