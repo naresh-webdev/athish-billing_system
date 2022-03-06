@@ -2,7 +2,7 @@ import mysql.connector as ms
 
 
 x = ms.connect(host='localhost', user='root',
-               passwd='')
+               passwd='Naresh@2004')
 # buffered is an attribute ,If buffered is True , the cursor fetches all rows from the server after an operation is executed.
 
 cur = x.cursor(buffered=True)
@@ -16,7 +16,7 @@ cur.execute(
 cur.execute("insert into product values(1,'apples',30,40),(2,'oranges',40,20),(3,'mango',30,25),(4,'strawberry',80,20),(5,'watermelon',20,60)")
 x.commit()
 
-cur.execute('create table remove(id int,Name varchar(30),qty int)')
+cur.execute('create table remove_items(id int,Name varchar(30),qty int)')
 cur.execute('create table feedback(name varchar(30),review varchar(150))')
 cur.execute(
     "create table customer(product_name varchar(30),qty int,amount float)")
