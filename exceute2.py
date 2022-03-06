@@ -30,9 +30,19 @@ try:
             print(i)
         print('\n')
 
-    def check_item(itemname,):
+    def check_item(itemname):
         itempresent = 0
         cur.execute("select distinct product_name from customer")
+        data = cur.fetchall()
+        l = []
+        for i in data:
+            if i[0] == itemname:
+                return True
+        return False
+
+    def check_item_market(itemname):
+        itempresent=0
+        cur.execute('select distinct name from product')
         data = cur.fetchall()
         l = []
         for i in data:
@@ -227,16 +237,19 @@ try:
                                 return_id = int(input('enter item id to be returned : '))
                                 return_name = input('enter item name : ')
                                 return_qty = int(input('enter qty : '))
-                                cur.execute('insert into return values({},'{}',{})'.format(return_id,return_name,return_qty))
+                                cur.execute("insert into remove_items values({},'{}',{})".format(return_id,return_name,return_qty))
                                 x.commit()
                                 print('item added successfully')
                             elif ch8 == 4:
                                 print("--removing an item from the market--")
                                 remove_name = input('enter name of the item to remove from the market : ')
-                                if check_item(remove_name):
-                                  cur.execute('delete from product where name='{}' '.format(remove_name))
+                                if check_item_market(remove_name):
+                                  cur.execute("delete from product where name='{}' ".format(remove_name))
+                                  x.commit()
+                                  print('item removed from the market successfully')
                                 else :
                                   print('the entered item is not present in the market')
+                                  print('try again')
                                                 
                             else:
                               
@@ -250,18 +263,17 @@ try:
                             break
                         else:
                             continue
-                    else:
-                        print('incorrect password...❌')
-                        print('returning to the home page.......')
-                        break
+                else:
+                    print('incorrect password...❌')
+                    print('returning to the home page.......')
+                    break
 
         else:
             print('invalid input!!!')
             print('try again....😟')
             break
 
-except Exception:
-    print('some unknown error occurred please try again..')
+
 
 
 finally:
