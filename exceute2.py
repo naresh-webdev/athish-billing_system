@@ -182,13 +182,13 @@ try:
                         'now you can perform two options to chose from admin privilliges')
                     while True:
                         print(
-                            '1.update items in the table(updating qty and price')
-                        print('2.add new item to the table')
+                            '1.add new item to the table')
+                        print('2.update items in the table')
                         print('3.retun item to the market')
                         print('4.remove item from the market')
                         ch8 = int(input('enter your choice : '))
                         if ch8 in [1, 2,3,4]:
-                            if ch == 1:
+                            if ch8 == 1:
                                 print('already existing items in the market are : ')
                                 display_items_admin()
                                 item_id = int(
@@ -261,7 +261,7 @@ try:
             break
 
 except Exception:
-    print('the program is tested mulitple time and you will never receive this message till you open your eyes while look closely what you type')
+    print('some unknown error occurred please try again..')
 
 
 finally:
